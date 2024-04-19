@@ -30,6 +30,9 @@ router.post("/addRecipe", async (req, res) => {
         const { name, description, ingredients } = req.body;
         let recipe = await recipes.findOne({ name });
         if (recipe) return res.json({ msg: "recipe already exists" });
+
+        
+
         await recipes.create({ ...req.body });
         return res.json({ msg: "recipe added" });
     } catch (error) {
